@@ -1,57 +1,105 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto - Un Rincón Romántico</title>
+    <title>Contacto</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         /* Estilo general */
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f8f9fa;
             color: #333;
+            overflow-x: hidden;
+            background-color: #f8f9fa; /* Color de fondo claro y suave */
             margin: 0;
             padding: 0;
         }
 
-        /* Navegación personalizada */
-        .navbar-custom {
-            background-color: #e83e8c; /* Color rosa suave */
-            border-bottom: 3px solid #ff6f61; /* Rosa más intenso */
+        /* Contenedor de botones en la barra lateral */
+        .button-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4));
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            z-index: 999;
         }
 
-        .navbar-custom .navbar-brand, .navbar-custom .nav-link {
+        .button-container .btn {
+            background: linear-gradient(135deg, #ff6f61, #e83e8c);
             color: #fff;
+            font-size: 1.1em;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            transition: background 0.3s, transform 0.3s;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
-        .navbar-custom .nav-link:hover {
-            background-color: #ff6f61;
+        .button-container .btn:hover {
+            background: linear-gradient(135deg, #ff4b6c, #e83e8c);
+            transform: scale(1.05);
+        }
+
+        /* Encabezado con animación de corazones */
+        .header {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #ff6f61, #e83e8c);
+            border-bottom: 5px solid #ff4b6c; /* Rosa más intenso */
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            margin: 20px auto;
+            max-width: 800px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .header h1 {
+            font-size: 3.5em;
             color: #fff;
+            margin: 0;
+            animation: fadeIn 2s ease-in-out, glow 1.5s infinite alternate;
+            text-shadow: 0 0 10px #ff6f61, 0 0 20px #ff6f61;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #ff6f61, 0 0 20px #ff6f61, 0 0 30px #ff6f61, 0 0 40px #ff6f61, 0 0 50px #ff6f61, 0 0 60px #ff6f61, 0 0 70px #ff6f61;
+            }
+            to {
+                text-shadow: 0 0 15px #ff4b6c, 0 0 30px #ff4b6c, 0 0 45px #ff4b6c, 0 0 60px #ff4b6c, 0 0 75px #ff4b6c, 0 0 90px #ff4b6c, 0 0 105px #ff4b6c;
+            }
         }
 
         /* Sección de contacto */
         .contact-section {
             padding: 60px 20px;
             text-align: center;
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.95); /* Blanco con opacidad */
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             margin: 20px auto;
-            max-width: 900px;
+            max-width: 800px;
             position: relative;
-            overflow: hidden;
-            border: 1px solid #e83e8c;
-            background: linear-gradient(135deg, #ffebf0, #f8c6d8);
+            animation: slideUp 2s ease-in-out;
         }
 
         .contact-section h2 {
             font-size: 2.5em;
-            color: #e83e8c;
-            margin-bottom: 30px;
+            color: #333;
+            margin-bottom: 20px;
         }
 
         .contact-section p {
@@ -62,171 +110,193 @@
         }
 
         .contact-section .btn {
-            background-color: #ff6f61;
+            background: linear-gradient(135deg, #ff6f61, #e83e8c);
             color: #fff;
             font-size: 1.2em;
-            padding: 15px 30px;
+            padding: 12px 25px;
             border: none;
             border-radius: 10px;
-            transition: background-color 0.3s, transform 0.3s;
+            transition: background 0.3s, transform 0.3s;
             text-decoration: none;
             display: inline-block;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact-section .btn::before {
-            content: "\u2764"; /* Heart symbol */
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 2em;
-            color: rgba(255, 255, 255, 0.5);
-            opacity: 0.7;
-            transition: opacity 0.3s;
-            pointer-events: none;
-        }
-
-        .contact-section .btn:hover::before {
-            opacity: 1;
+            margin-top: 20px;
+            text-align: center;
         }
 
         .contact-section .btn:hover {
-            background-color: #ff4b6c;
-            transform: scale(1.1);
-        }
-
-        .contact-section .social-icons {
-            margin-top: 20px;
-        }
-
-        .contact-section .social-icons i {
-            font-size: 2em;
-            color: #e83e8c;
-            margin: 0 10px;
-            transition: color 0.3s;
-        }
-
-        .contact-section .social-icons i:hover {
-            color: #ff4b6c;
+            background: linear-gradient(135deg, #ff4b6c, #e83e8c);
+            transform: scale(1.05);
         }
 
         /* Sección de mapa */
         .map-section {
-            padding: 20px;
-            text-align: center;
-            background-color: #f0f0f0;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             margin: 20px auto;
             max-width: 800px;
-        }
-
-        .map-section h3 {
-            font-size: 2em;
-            color: #e83e8c;
-            margin-bottom: 20px;
+            position: relative;
         }
 
         .map-section iframe {
+            width: 100%;
+            height: 300px;
             border: none;
             border-radius: 10px;
-            width: 100%;
-            height: 400px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
         /* Formulario adicional */
         .additional-form {
-            margin-top: 20px;
-            padding: 30px;
-            background-color: #fff;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid #ddd;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            max-width: 600px;
-            margin: 40px auto;
-            text-align: center;
+            margin: 20px auto;
+            max-width: 800px;
             position: relative;
         }
 
         .additional-form h3 {
             font-size: 2em;
-            color: #e83e8c;
-            margin-bottom: 30px;
-        }
-
-        .additional-form input, .additional-form textarea {
-            border-radius: 5px;
-            border: 1px solid #ddd;
-            padding: 15px;
-            width: calc(100% - 30px);
+            color: #333;
             margin-bottom: 20px;
-            font-size: 1em;
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
-        }
-
-        .additional-form button {
-            background-color: #ff6f61;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            padding: 15px 30px;
-            font-size: 1.1em;
-            transition: background-color 0.3s;
-            cursor: pointer;
-        }
-
-        .additional-form button:hover {
-            background-color: #ff4b6c;
         }
 
         .additional-form .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .additional-form label {
             display: block;
-            font-size: 1.1em;
-            color: #e83e8c;
             margin-bottom: 5px;
+            font-size: 1em;
+            color: #333;
         }
 
-        .additional-form .form-check {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
+        .additional-form input,
+        .additional-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
         }
 
-        .additional-form .form-check input {
-            margin-right: 10px;
+        .additional-form button {
+            background: linear-gradient(135deg, #ff6f61, #e83e8c);
+            color: #fff;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            transition: background 0.3s, transform 0.3s;
+            cursor: pointer;
         }
 
-        /* Animación de flores */
-        .flower-animate {
+        .additional-form button:hover {
+            background: linear-gradient(135deg, #ff4b6c, #e83e8c);
+            transform: scale(1.05);
+        }
+
+        /* Corazones animados con imagen */
+        .heart {
             position: absolute;
             width: 50px;
-            animation: flower-animation 5s infinite;
+            height: 50px;
+            background-image: url('https://static.vecteezy.com/system/resources/previews/001/187/492/original/heart-png.png');
+            background-size: cover;
+            opacity: 0.9;
+            z-index: 1;
         }
 
-        @keyframes flower-animation {
-            0% { top: 0; opacity: 1; }
-            50% { top: 50px; opacity: 0.7; }
-            100% { top: 0; opacity: 1; }
+        .heart:nth-child(1) {
+            top: -10%;
+            left: 5%;
+            animation: float 2s linear infinite;
         }
 
-        .flower-animate:nth-child(2) { left: 15%; animation-delay: 1s; }
-        .flower-animate:nth-child(3) { left: 35%; animation-delay: 2s; }
-        .flower-animate:nth-child(4) { left: 55%; animation-delay: 3s; }
-        .flower-animate:nth-child(5) { left: 75%; animation-delay: 4s; }
+        .heart:nth-child(2) {
+            top: -20%;
+            left: 25%;
+            animation: float 2.5s linear infinite;
+        }
 
-        /* Responsividad */
+        .heart:nth-child(3) {
+            top: -15%;
+            left: 45%;
+            animation: float 3s linear infinite;
+        }
+
+        .heart:nth-child(4) {
+            top: -5%;
+            left: 65%;
+            animation: float 3.5s linear infinite;
+        }
+
+        .heart:nth-child(5) {
+            top: -10%;
+            left: 85%;
+            animation: float 4s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(-20px); }
+            50% { transform: translateY(40px); }
+            100% { transform: translateY(-20px); }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Estilos responsivos */
         @media (max-width: 768px) {
-            .navbar-custom .navbar-brand, .navbar-custom .nav-link {
-                font-size: 0.9em;
+            .button-container {
+                top: 10px;
+                left: 10px;
+                padding: 15px;
             }
 
-            .contact-section h2, .map-section h3, .additional-form h3 {
-                font-size: 1.8em;
+            .button-container .btn {
+                font-size: 1em;
+                padding: 10px 20px;
+            }
+
+            .header h1 {
+                font-size: 2.5em;
+            }
+
+            .contact-section h2 {
+                font-size: 2em;
+            }
+
+            .contact-section p {
+                font-size: 1em;
             }
 
             .contact-section .btn {
@@ -234,99 +304,103 @@
                 padding: 10px 20px;
             }
 
-            .contact-section .social-icons i {
-                font-size: 1.5em;
+            .additional-form h3 {
+                font-size: 1.8em;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .button-container {
+                top: 5px;
+                left: 5px;
+                padding: 10px;
             }
 
-            .additional-form input, .additional-form textarea {
-                width: calc(100% - 20px);
+            .button-container .btn {
+                font-size: 0.9em;
+                padding: 8px 15px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .contact-section h2 {
+                font-size: 1.8em;
+            }
+
+            .contact-section p {
+                font-size: 0.9em;
+            }
+
+            .contact-section .btn {
+                font-size: 0.9em;
+                padding: 8px 15px;
+            }
+
+            .additional-form h3 {
+                font-size: 1.6em;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navegación -->
-    <nav class="navbar navbar-expand-lg navbar-custom">
-        <a class="navbar-brand" href="index.html">Inicio</a>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="gallery.html">Galería</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="phrases.html">Frases Románticas</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contacto</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <!-- Contenedor de botones en la barra lateral -->
+    <div class="button-container">
+        <a class="btn" href="index.html">Inicio</a>
+        <a class="btn" href="gallery.html">Galería</a>
+        <a class="btn" href="phrases.html">Frases Románticas</a>
+        <a class="btn" href="contact.html">Contacto</a>
+    </div>
+
+    <!-- Encabezado con una animación de corazones -->
+    <header class="header">
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <h1>Contacto</h1>
+    </header>
 
     <!-- Sección de contacto -->
     <section class="contact-section">
-        <h2>Envíame un Mensaje</h2>
-        <p>Si quieres decirme algo especial, puedes enviarme un mensaje directamente a través de WhatsApp. ¡Estoy deseando escuchar tus palabras!</p>
-        <a class="btn" href="https://wa.me/0988070641?text=Hola!%20Quiero%20enviar%20un%20mensaje%20a%20través%20de%20este%20formulario.">Enviar Mensaje</a>
-
-        <!-- Íconos de redes sociales -->
-        <div class="social-icons">
-            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-        </div>
-
-        <!-- Animación de flores -->
-        <div class="flower-animate-wrapper">
-            <img src="https://clipart-library.com/images_k/yellow-flower-transparent-background/yellow-flower-transparent-background-4.png" alt="Flor Amarilla" class="flower-animate" style="left: 10%; animation-delay: 0s;">
-            <img src="https://clipart-library.com/images_k/yellow-flower-transparent-background/yellow-flower-transparent-background-4.png" alt="Flor Amarilla" class="flower-animate" style="left: 30%; animation-delay: 1s;">
-            <img src="https://clipart-library.com/images_k/yellow-flower-transparent-background/yellow-flower-transparent-background-4.png" alt="Flor Amarilla" class="flower-animate" style="left: 50%; animation-delay: 2s;">
-            <img src="https://clipart-library.com/images_k/yellow-flower-transparent-background/yellow-flower-transparent-background-4.png" alt="Flor Amarilla" class="flower-animate" style="left: 70%; animation-delay: 3s;">
-            <img src="https://clipart-library.com/images_k/yellow-flower-transparent-background/yellow-flower-transparent-background-4.png" alt="Flor Amarilla" class="flower-animate" style="left: 90%; animation-delay: 4s;">
-        </div>
+        <h2>¡Estamos aquí para ti!</h2>
+        <p>Si tienes alguna pregunta o simplemente quieres decirnos algo, no dudes en contactarnos. Estaremos encantados de escucharte.</p>
+        <a class="btn" href="mailto:0988070641">Enviar Mensaje</a>
     </section>
 
-    <!-- Sección de mapa -->
-    <section class="map-section">
-        <h3>Encuentra Nuestra Ubicación</h3>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.812214426568!2d-73.98204768459524!3d40.7590709793269!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25850a8ed9f41%3A0x5b6d3c69eb23a1b2!2sTimes%20Square!5e0!3m2!1ses!2sus!4v1629404458475!5m2!1ses!2sus" allowfullscreen="" loading="lazy"></iframe>
-    </section>
-
-    <!-- Formulario adicional -->
-    <section class="additional-form">
-        <h3>Formulario Adicional</h3>
-        <form action="https://wa.me/0988070641" method="GET">
+    <!-- Sección de formulario adicional -->
+    <div class="additional-form">
+        <h3>Formulario de Contacto</h3>
+        <form action="mailto:0988070641" method="post" enctype="text/plain">
             <div class="form-group">
-                <label for="name">Tu nombre</label>
-                <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+                <label for="name">Nombre</label>
+                <input type="text" id="name" name="name" required>
             </div>
             <div class="form-group">
-                <label for="email">Tu correo electrónico (opcional)</label>
-                <input type="email" id="email" name="email" placeholder="Tu correo electrónico (opcional)">
+                <label for="email">Correo Electrónico</label>
+                <input type="email" id="email" name="email" required>
             </div>
             <div class="form-group">
-                <label for="message">Tu mensaje</label>
-                <textarea id="message" name="message" rows="4" placeholder="Tu mensaje" required></textarea>
+                <label for="message">Mensaje</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
             </div>
-            <div class="form-check">
-                <input type="checkbox" id="subscribe" name="subscribe">
-                <label for="subscribe">Suscribirme a las actualizaciones</label>
-            </div>
-            <button type="submit">Enviar Mensaje</button>
+            <button type="submit">Enviar</button>
         </form>
-    </section>
-    <div id="audio-container">
-        <iframe src="audio.html" style="border:none; width:100%; height:100px;" scrolling="no"></iframe>
     </div>
 
+    <!-- Mapa de ubicación -->
+    <div class="map-section">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15612.254569573637!2d-77.0368707!3d38.9071923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7b7b7b7b7b7b7%3A0x7e2e2e2e2e2e2e2e!2sWashington%2C%20DC!5e0!3m2!1ses!2sus!4v1659618303047!5m2!1ses!2sus" allowfullscreen></iframe>
+    </div>
 
-    
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- Font Awesome JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
 </body>
 </html>
+
+
+      
