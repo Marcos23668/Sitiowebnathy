@@ -12,13 +12,13 @@
             font-family: 'Arial', sans-serif;
             color: #333;
             overflow-x: hidden;
-            background-color: #f8f9fa;
+            background-color: #f8f9fa; /* Color de fondo claro y suave */
         }
 
         /* Navegación personalizada */
         .navbar-custom {
-            background-color: #e83e8c;
-            border-bottom: 3px solid #ff6f61;
+            background-color: #e83e8c; /* Color rosa suave */
+            border-bottom: 3px solid #ff6f61; /* Rosa más intenso */
         }
 
         .navbar-custom .navbar-brand {
@@ -46,8 +46,8 @@
         .header {
             text-align: center;
             padding: 80px 20px;
-            background-color: #e83e8c;
-            border-bottom: 5px solid #ff6f61;
+            background-color: #e83e8c; /* Rosa suave */
+            border-bottom: 5px solid #ff6f61; /* Rosa más intenso */
             position: relative;
             overflow: hidden;
             border-radius: 10px;
@@ -64,10 +64,10 @@
 
         @keyframes glow {
             from {
-                text-shadow: 0 0 10px #ff6f61, 0 0 20px #ff6f61;
+                text-shadow: 0 0 10px #ff6f61, 0 0 20px #ff6f61, 0 0 30px #ff6f61, 0 0 40px #ff6f61, 0 0 50px #ff6f61, 0 0 60px #ff6f61, 0 0 70px #ff6f61;
             }
             to {
-                text-shadow: 0 0 15px #ff4b6c, 0 0 30px #ff4b6c;
+                text-shadow: 0 0 15px #ff4b6c, 0 0 30px #ff4b6c, 0 0 45px #ff4b6c, 0 0 60px #ff4b6c, 0 0 75px #ff4b6c, 0 0 90px #ff4b6c, 0 0 105px #ff4b6c;
             }
         }
 
@@ -75,7 +75,7 @@
         .introduction {
             padding: 60px 20px;
             text-align: center;
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(255, 255, 255, 0.95); /* Blanco con opacidad */
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             margin: 20px auto;
@@ -86,13 +86,19 @@
 
         .introduction p {
             font-size: 1.4em;
-            color: #333;
+            color: #333; /* Texto en gris oscuro */
             margin-bottom: 20px;
             animation: fadeIn 3s ease-in-out;
         }
 
+        .main-image {
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
         .main-image img {
-            width: 100%;
+            width: 100%; /* Ajuste completo del ancho */
             height: auto;
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
@@ -113,7 +119,7 @@
 
         /* Botón de ver galería */
         .btn-gallery {
-            background-color: #ff6f61;
+            background-color: #ff6f61; /* Rosa intenso */
             color: #fff;
             font-size: 1.2em;
             padding: 15px 30px;
@@ -128,7 +134,7 @@
         }
 
         .btn-gallery:hover {
-            background-color: #ff4b6c;
+            background-color: #ff4b6c; /* Rosa más intenso */
             transform: scale(1.1);
         }
 
@@ -138,7 +144,7 @@
             100% { transform: scale(1); }
         }
 
-        /* Corazones animados */
+        /* Corazones animados con imagen */
         .heart {
             position: absolute;
             width: 50px;
@@ -217,6 +223,15 @@
             }
         }
 
+        /* Contenedor fijo para el audio */
+        #audio-container {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            z-index: 9999;
+        }
+
         /* Estilos responsivos */
         @media (max-width: 768px) {
             .navbar-custom .navbar-brand {
@@ -270,7 +285,7 @@
     <nav class="navbar navbar-expand-lg navbar-custom">
         <a class="navbar-brand" href="index.html">Inicio</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon" style="color:white;">&#9776;</span> <!-- Este icono es el menú -->
+            <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
@@ -286,30 +301,65 @@
             </ul>
         </div>
     </nav>
+    <!-- Imagen de fondo y contenedor principal -->
+    <div class="background">
+        <!-- Encabezado con una animación de corazones -->
+        <header class="header">
+            <div class="heart"></div>
+            <div class="heart"></div>
+            <div class="heart"></div>
+            <div class="heart"></div>
+            <div class="heart"></div>
+            <h1>Descubre Nuestro Espacio Especial</h1>
+        </header>
 
-    <!-- Imagen principal -->
-    <div class="main-image">
-        <img src="https://www.publicdomainpictures.net/pictures/320000/nahled/background-image.png" alt="Imagen romántica">
+        <!-- Sección de introducción -->
+        <section class="introduction">
+            <p>Este es un espacio especial dedicado a ti, lleno de recuerdos, amor y momentos que siempre quiero atesorar.</p>
+            <div class="main-image">
+                <img src="https://www.imagenesvarias.com/wp-content/uploads/2017/12/Fondos-de-pantalla-de-Parejas-Enamoradas-23.jpg" alt="Imagen Romántica Principal">
+            </div>
+            <a class="btn-gallery" href="gallery.html">Ver Galería</a>
+        </section>
     </div>
 
-    <!-- Encabezado con corazones animados -->
-    <div class="header">
-        <h1>Un Rincón Romántico</h1>
-        <div class="heart"></div>
-        <div class="heart"></div>
-        <div class="heart"></div>
-        <div class="heart"></div>
-        <div class="heart"></div>
+    <!-- Contenedor para el audio -->
+    <div id="audio-container">
+        <iframe src="audio.html" style="border:none; width:100%; height:100px;" scrolling="no"></iframe>
     </div>
 
-    <div class="introduction">
-        <p>Bienvenida a este espacio dedicado al amor que te tengo .!</p>
-        <a href="gallery.html" class="btn-gallery">Ver Galería</a>
-    </div>
-
-    <!-- Scripts de Bootstrap y jQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <!-- JavaScript para controlar el audio -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var audio = document.getElementById('background-audio');
+            var isPlaying = localStorage.getItem('isPlaying') === 'true';
+    
+            if (isPlaying) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+    
+            audio.addEventListener('play', function() {
+                localStorage.setItem('isPlaying', 'true');
+            });
+    
+            audio.addEventListener('pause', function() {
+                localStorage.setItem('isPlaying', 'false');
+            });
+    
+            // Reiniciar el audio cuando se acabe
+            audio.addEventListener('ended', function() {
+                this.currentTime = 0; // Reiniciar el audio
+                this.play(); // Reproducir el audio nuevamente
+            });
+        });
+    </script>
+    
 </body>
 </html>
