@@ -3,59 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frases Románticas - Un Rincón Romántico</title>
+    <title>Frases Románticas</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         /* Estilo general */
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f8f9fa; /* Color de fondo claro y suave */
             color: #333;
+            overflow-x: hidden;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
         }
 
-        /* Navegación personalizada */
-        .navbar-custom {
-            background-color: #e83e8c; /* Color rosa suave */
-            border-bottom: 3px solid #ff6f61; /* Rosa más intenso */
+        /* Contenedor de botones en la barra lateral */
+        .button-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4));
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            z-index: 999;
         }
 
-        .navbar-custom .navbar-brand, .navbar-custom .nav-link {
+        .button-container .btn {
+            background: linear-gradient(135deg, #ff6f61, #e83e8c);
             color: #fff;
+            font-size: 1.1em;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            transition: background 0.3s, transform 0.3s;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
-        .navbar-custom .nav-link:hover {
-            background-color: #ff6f61;
+        .button-container .btn:hover {
+            background: linear-gradient(135deg, #ff4b6c, #e83e8c);
+            transform: scale(1.05);
+        }
+
+        /* Encabezado con animación de corazones */
+        .header {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #ff6f61, #e83e8c);
+            border-bottom: 5px solid #ff4b6c;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            margin: 20px auto;
+            max-width: 800px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .header h1 {
+            font-size: 3.5em;
             color: #fff;
+            margin: 0;
+            animation: fadeIn 2s ease-in-out, glow 1.5s infinite alternate;
+            text-shadow: 0 0 10px #ff6f61, 0 0 20px #ff6f61;
         }
 
-        /* Sección de frases románticas */
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #ff6f61, 0 0 20px #ff6f61, 0 0 30px #ff6f61, 0 0 40px #ff6f61, 0 0 50px #ff6f61, 0 0 60px #ff6f61, 0 0 70px #ff6f61;
+            }
+            to {
+                text-shadow: 0 0 15px #ff4b6c, 0 0 30px #ff4b6c, 0 0 45px #ff4b6c, 0 0 60px #ff4b6c, 0 0 75px #ff4b6c, 0 0 90px #ff4b6c, 0 0 105px #ff4b6c;
+            }
+        }
+
+        /* Sección de frases */
         .phrases-section {
             padding: 60px 20px;
             text-align: center;
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.95);
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             margin: 20px auto;
-            max-width: 1200px;
-            position: relative;
-            overflow: hidden;
+            max-width: 800px;
         }
 
         .phrases-section h2 {
             font-size: 2.5em;
-            color: #e83e8c; /* Rosa suave */
-            margin-bottom: 30px;
-            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
         }
 
         .phrases-section table {
             width: 100%;
-            margin: 0 auto;
+            margin: 20px 0;
             border-collapse: collapse;
-            font-size: 1.2em;
-            text-align: center;
-            border: 1px solid #ddd;
         }
 
         .phrases-section th, .phrases-section td {
@@ -64,119 +111,173 @@
         }
 
         .phrases-section th {
-            background-color: #e83e8c; /* Rosa suave */
-            color: #fff;
-            font-weight: bold;
+            background-color: #f2f2f2;
+            text-align: left;
         }
 
         .phrases-section td {
-            background-color: #f8f9fa;
+            background-color: #fff;
         }
 
-        .phrases-section tr:nth-child(even) {
-            background-color: #f1f1f1;
+        .highlight {
+            color: #e83e8c;
+            font-weight: bold;
         }
 
-        .phrases-section .flower {
+        .quote {
+            font-size: 1.5em;
+            color: #ff6f61;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        /* Corazones animados con imagen */
+        .heart {
             position: absolute;
             width: 50px;
             height: 50px;
-            background-image: url('https://clipart-library.com/images_k/yellow-flower-transparent-background/yellow-flower-transparent-background-4.png');
+            background-image: url('https://static.vecteezy.com/system/resources/previews/001/187/492/original/heart-png.png');
             background-size: cover;
-            opacity: 0.8;
+            opacity: 0.9;
             z-index: 1;
+        }
+
+        .heart:nth-child(1) {
+            top: -10%;
+            left: 5%;
+            animation: float 2s linear infinite;
+        }
+
+        .heart:nth-child(2) {
+            top: -20%;
+            left: 25%;
+            animation: float 2.5s linear infinite;
+        }
+
+        .heart:nth-child(3) {
+            top: -15%;
+            left: 45%;
+            animation: float 3s linear infinite;
+        }
+
+        .heart:nth-child(4) {
+            top: -5%;
+            left: 65%;
+            animation: float 3.5s linear infinite;
+        }
+
+        .heart:nth-child(5) {
+            top: -10%;
+            left: 85%;
             animation: float 4s linear infinite;
-        }
-
-        .phrases-section .flower:nth-child(1) {
-            top: 10%;
-            left: 10%;
-            animation-duration: 5s;
-        }
-
-        .phrases-section .flower:nth-child(2) {
-            top: 20%;
-            left: 30%;
-            animation-duration: 6s;
-        }
-
-        .phrases-section .flower:nth-child(3) {
-            top: 30%;
-            left: 50%;
-            animation-duration: 7s;
-        }
-
-        .phrases-section .flower:nth-child(4) {
-            top: 40%;
-            left: 70%;
-            animation-duration: 8s;
-        }
-
-        .phrases-section .flower:nth-child(5) {
-            top: 50%;
-            left: 90%;
-            animation-duration: 9s;
         }
 
         @keyframes float {
             0% { transform: translateY(-20px); }
-            50% { transform: translateY(20px); }
+            50% { transform: translateY(40px); }
             100% { transform: translateY(-20px); }
         }
 
-        .phrases-section .quote {
-            font-style: italic;
-            color: #666;
-            margin-top: 20px;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
 
-        .phrases-section .highlight {
-            color: #ff6f61; /* Rosa intenso */
-            font-weight: bold;
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
-        /* Contenedor fijo para el audio */
-        #audio-container {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-            z-index: 9999;
-            background-color: #fff;
-            padding: 10px;
-            border-top: 2px solid #e83e8c; /* Rosa suave */
+        /* Estilos responsivos */
+        @media (max-width: 768px) {
+            .button-container {
+                top: 10px;
+                left: 10px;
+                padding: 15px;
+            }
+
+            .button-container .btn {
+                font-size: 1em;
+                padding: 10px 20px;
+            }
+
+            .header h1 {
+                font-size: 2.5em;
+            }
+
+            .phrases-section h2 {
+                font-size: 2em;
+            }
+
+            .phrases-section table {
+                font-size: 0.9em;
+            }
+
+            .quote {
+                font-size: 1.2em;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .button-container {
+                top: 5px;
+                left: 5px;
+                padding: 10px;
+            }
+
+            .button-container .btn {
+                font-size: 0.9em;
+                padding: 8px 15px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .phrases-section h2 {
+                font-size: 1.8em;
+            }
+
+            .phrases-section table {
+                font-size: 0.8em;
+            }
+
+            .quote {
+                font-size: 1em;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Navegación -->
-    <nav class="navbar navbar-expand-lg navbar-custom">
-        <a class="navbar-brand" href="index.html">Inicio</a>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="gallery.html">Galería</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="phrases.html">Frases Románticas</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contacto</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Sección de frases románticas -->
+    <!-- Contenedor de botones en la barra lateral -->
+    <div class="button-container">
+        <a class="btn" href="index.html">Inicio</a>
+        <a class="btn" href="gallery.html">Galería</a>
+        <a class="btn" href="phrases.html">Frases Románticas</a>
+        <a class="btn" href="contact.html">Contacto</a>
+    </div>
+    <!-- Encabezado con una animación de corazones -->
+    <div class="header">
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <h1>Frases Románticas</h1>
+    </div>
+    <!-- Sección de frases -->
     <section class="phrases-section">
-        <h2>Frases que Expresan Mi Amor</h2>
-
-        <div class="flower"></div>
-        <div class="flower"></div>
-        <div class="flower"></div>
-        <div class="flower"></div>
-        <div class="flower"></div>
-
+        <h2>Frases Especiales</h2>
         <table>
             <thead>
                 <tr>
@@ -210,21 +311,5 @@
 
         <p class="quote">“Eres la única en mi corazón y en mi vida. No hay nada que desee más que compartir cada momento contigo.”</p>
     </section>
-
-    <!-- Contenedor para el audio -->
-    
-
-    
-     
-    </div>
-
-
-
-
-
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
