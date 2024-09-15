@@ -55,11 +55,11 @@
         .header {
             text-align: center;
             padding: 80px 20px;
-            background-color: #e83e8c; /* Rosa suave */
+            background: linear-gradient(135deg, #ff6f61, #e83e8c);
             border-bottom: 5px solid #ff6f61; /* Rosa más intenso */
             position: relative;
             overflow: hidden;
-            border-radius: 10px;
+            border-radius: 15px;
             margin: 20px auto;
             max-width: 800px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -86,7 +86,7 @@
         .introduction {
             padding: 60px 20px;
             text-align: center;
-            background-color: rgba(255, 255, 255, 0.95); /* Blanco con opacidad */
+            background: rgba(255, 255, 255, 0.95); /* Blanco con opacidad */
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             margin: 20px auto;
@@ -132,11 +132,11 @@
 
         /* Botón de ver galería */
         .btn-gallery {
-            background-color: #ff6f61; /* Rosa intenso */
+            background: linear-gradient(135deg, #ff6f61, #ff4b6c);
+            border: 1px solid #ff4b6c;
             color: #fff;
             font-size: 1.2em;
             padding: 15px 30px;
-            border: none;
             border-radius: 10px;
             transition: background-color 0.3s, transform 0.3s;
             text-decoration: none;
@@ -148,7 +148,8 @@
         }
 
         .btn-gallery:hover {
-            background-color: #ff4b6c; /* Rosa más intenso */
+            background: linear-gradient(135deg, #ff4b6c, #ff6f61);
+            border-color: #ff6f61;
             transform: scale(1.1);
         }
 
@@ -262,6 +263,11 @@
                 font-size: 1em;
                 padding: 10px 20px;
             }
+
+            #audio-container {
+                margin-top: 20px;
+                text-align: center;
+            }
         }
 
         @media (max-width: 576px) {
@@ -290,33 +296,23 @@
             }
         }
 
-        /* Nuevas reglas de diseño */
-        .header {
-            background: linear-gradient(135deg, #ff6f61, #e83e8c);
-            border-radius: 15px;
-            padding: 100px 20px;
+        /* Nuevas reglas de diseño para el audio */
+        #audio-container {
+            background: #e83e8c;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            margin: 20px auto;
+            max-width: 800px;
         }
 
-        .introduction {
-            background: rgba(255, 255, 255, 0.8);
-            border: 1px solid #ddd;
+        #audio-container iframe {
+            border: none;
+            width: 100%;
+            height: 60px;
+            border-radius: 10px;
         }
 
-        .btn-gallery {
-            background: linear-gradient(135deg, #ff6f61, #ff4b6c);
-            border: 1px solid #ff4b6c;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-gallery:hover {
-            background: linear-gradient(135deg, #ff4b6c, #ff6f61);
-            border-color: #ff6f61;
-        }
-
-        .button-container {
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4));
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        }
     </style>
 </head>
 <body>
@@ -342,17 +338,17 @@
 
         <!-- Sección de introducción -->
         <section class="introduction">
-            <p>Este es un espacio especial dedicado a ti, Porque me gustas tanto.</p>
+            <p>Este es un espacio especial dedicado a ti, lleno de recuerdos, amor y momentos que siempre quiero atesorar.</p>
             <div class="main-image">
                 <img id="main-image" src="https://www.imagenesvarias.com/wp-content/uploads/2017/12/Fondos-de-pantalla-de-Parejas-Enamoradas-23.jpg" alt="Imagen Romántica Principal">
             </div>
             <a class="btn-gallery" href="gallery.html">Ver Galería</a>
         </section>
 
-
-          <div id="audio-container">
-        <iframe src="audio.html" style="border:none; width:100%; height:100px;" scrolling="no"></iframe>
-    </div>
+        <!-- Contenedor de audio -->
+        <div id="audio-container">
+            <iframe src="audio.html" scrolling="no"></iframe>
+        </div>
 
     </div>
 
@@ -360,7 +356,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
 
 </body>
 </html>
