@@ -13,40 +13,42 @@
             color: #333;
             overflow-x: hidden;
             background-color: #f8f9fa; /* Color de fondo claro y suave */
+            margin: 0;
+            padding: 0;
         }
 
-        /* Contenedor de botones */
+        /* Contenedor de botones en la barra lateral */
         .button-container {
-            text-align: center;
-            padding: 20px;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
             background-color: #e83e8c; /* Color rosa suave */
-            border-bottom: 3px solid #ff6f61; /* Rosa más intenso */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 999;
         }
 
         .button-container .btn {
             background-color: #ff6f61; /* Rosa intenso */
             color: #fff;
-            font-size: 1.2em;
-            padding: 15px 30px;
+            font-size: 1.1em;
+            padding: 12px 25px;
             border: none;
             border-radius: 10px;
             transition: background-color 0.3s, transform 0.3s;
             text-decoration: none;
-            display: inline-block;
-            margin: 10px;
             text-align: center;
-            animation: bounce 1s ease-in-out;
+            display: inline-block;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
         .button-container .btn:hover {
             background-color: #ff4b6c; /* Rosa más intenso */
-            transform: scale(1.1);
-        }
-
-        @keyframes bounce {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            transform: scale(1.05);
         }
 
         /* Encabezado con animación de corazones */
@@ -60,6 +62,7 @@
             border-radius: 10px;
             margin: 20px auto;
             max-width: 800px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         .header h1 {
@@ -67,6 +70,7 @@
             color: #fff;
             margin: 0;
             animation: fadeIn 2s ease-in-out, glow 1.5s infinite alternate;
+            text-shadow: 0 0 10px #ff6f61, 0 0 20px #ff6f61;
         }
 
         @keyframes glow {
@@ -96,6 +100,7 @@
             color: #333; /* Texto en gris oscuro */
             margin-bottom: 20px;
             animation: fadeIn 3s ease-in-out;
+            line-height: 1.6;
         }
 
         .main-image {
@@ -110,6 +115,7 @@
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             animation: move 10s ease-in-out infinite, scaleUp 5s ease-in-out infinite;
+            cursor: pointer;
         }
 
         @keyframes move {
@@ -138,6 +144,7 @@
             margin-top: 20px;
             text-align: center;
             animation: bounce 1s ease-in-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .btn-gallery:hover {
@@ -230,17 +237,14 @@
             }
         }
 
-        /* Contenedor fijo para el audio */
-        #audio-container {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-            z-index: 9999;
-        }
-
         /* Estilos responsivos */
         @media (max-width: 768px) {
+            .button-container {
+                top: 10px;
+                left: 10px;
+                padding: 15px;
+            }
+
             .button-container .btn {
                 font-size: 1em;
                 padding: 10px 20px;
@@ -261,6 +265,12 @@
         }
 
         @media (max-width: 576px) {
+            .button-container {
+                top: 5px;
+                left: 5px;
+                padding: 10px;
+            }
+
             .button-container .btn {
                 font-size: 0.9em;
                 padding: 8px 15px;
@@ -279,10 +289,38 @@
                 padding: 8px 15px;
             }
         }
+
+        /* Nuevas reglas de diseño */
+        .header {
+            background: linear-gradient(135deg, #ff6f61, #e83e8c);
+            border-radius: 15px;
+            padding: 100px 20px;
+        }
+
+        .introduction {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid #ddd;
+        }
+
+        .btn-gallery {
+            background: linear-gradient(135deg, #ff6f61, #ff4b6c);
+            border: 1px solid #ff4b6c;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-gallery:hover {
+            background: linear-gradient(135deg, #ff4b6c, #ff6f61);
+            border-color: #ff6f61;
+        }
+
+        .button-container {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4));
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body>
-    <!-- Contenedor de botones -->
+    <!-- Contenedor de botones en la barra lateral -->
     <div class="button-container">
         <a class="btn" href="index.html">Inicio</a>
         <a class="btn" href="gallery.html">Galería</a>
@@ -306,10 +344,16 @@
         <section class="introduction">
             <p>Este es un espacio especial dedicado a ti, lleno de recuerdos, amor y momentos que siempre quiero atesorar.</p>
             <div class="main-image">
-                <img src="https://www.imagenesvarias.com/wp-content/uploads/2017/12/Fondos-de-pantalla-de-Parejas-Enamoradas-23.jpg" alt="Imagen Romántica Principal">
+                <img id="main-image" src="https://www.imagenesvarias.com/wp-content/uploads/2017/12/Fondos-de-pantalla-de-Parejas-Enamoradas-23.jpg" alt="Imagen Romántica Principal">
             </div>
             <a class="btn-gallery" href="gallery.html">Ver Galería</a>
         </section>
+
+
+          <div id="audio-container">
+        <iframe src="audio.html" style="border:none; width:100%; height:100px;" scrolling="no"></iframe>
+    </div>
+
     </div>
 
     <!-- Bootstrap JS and dependencies -->
@@ -317,36 +361,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <!-- Contenedor para el audio -->
-    <div id="audio-container">
-        <iframe src="audio.html" style="border:none; width:100%; height:100px;" scrolling="no"></iframe>
-    </div>
-    <!-- JavaScript para controlar el audio -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var audio = document.getElementById('background-audio');
-            var isPlaying = localStorage.getItem('isPlaying') === 'true';
-    
-            if (isPlaying) {
-                audio.play();
-            } else {
-                audio.pause();
-            }
-    
-            audio.addEventListener('play', function() {
-                localStorage.setItem('isPlaying', 'true');
-            });
-    
-            audio.addEventListener('pause', function() {
-                localStorage.setItem('isPlaying', 'false');
-            });
-    
-            // Reiniciar el audio cuando se acabe
-            audio.addEventListener('ended', function() {
-                this.currentTime = 0; // Reiniciar el audio
-                this.play(); // Reproducir el audio nuevamente
-            });
-        });
-    </script>
+
 </body>
 </html>
+
