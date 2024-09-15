@@ -15,31 +15,38 @@
             background-color: #f8f9fa; /* Color de fondo claro y suave */
         }
 
-        /* Navegación personalizada */
-        .navbar-custom {
+        /* Contenedor de botones */
+        .button-container {
+            text-align: center;
+            padding: 20px;
             background-color: #e83e8c; /* Color rosa suave */
             border-bottom: 3px solid #ff6f61; /* Rosa más intenso */
         }
 
-        .navbar-custom .navbar-brand {
-            color: #fff;
-            font-size: 1.5em;
-            font-weight: bold;
-            animation: slideIn 2s ease-in-out;
-        }
-
-        .navbar-custom .nav-link {
+        .button-container .btn {
+            background-color: #ff6f61; /* Rosa intenso */
             color: #fff;
             font-size: 1.2em;
-            padding: 10px 15px;
-            transition: background-color 0.3s, color 0.3s;
-            animation: fadeIn 3s ease-in-out;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            transition: background-color 0.3s, transform 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+            text-align: center;
+            animation: bounce 1s ease-in-out;
         }
 
-        .navbar-custom .nav-link:hover {
-            background-color: #ff6f61;
-            color: #fff;
-            border-radius: 5px;
+        .button-container .btn:hover {
+            background-color: #ff4b6c; /* Rosa más intenso */
+            transform: scale(1.1);
+        }
+
+        @keyframes bounce {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
 
         /* Encabezado con animación de corazones */
@@ -234,12 +241,9 @@
 
         /* Estilos responsivos */
         @media (max-width: 768px) {
-            .navbar-custom .navbar-brand {
-                font-size: 1.2em;
-            }
-
-            .navbar-custom .nav-link {
+            .button-container .btn {
                 font-size: 1em;
+                padding: 10px 20px;
             }
 
             .header h1 {
@@ -257,12 +261,9 @@
         }
 
         @media (max-width: 576px) {
-            .navbar-custom .navbar-brand {
-                font-size: 1em;
-            }
-
-            .navbar-custom .nav-link {
+            .button-container .btn {
                 font-size: 0.9em;
+                padding: 8px 15px;
             }
 
             .header h1 {
@@ -281,26 +282,14 @@
     </style>
 </head>
 <body>
-    <!-- Navegación -->
-    <nav class="navbar navbar-expand-lg navbar-custom">
-        <a class="navbar-brand" href="index.html">Inicio</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="gallery.html">Galería</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="phrases.html">Frases Románticas</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contacto</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <!-- Contenedor de botones -->
+    <div class="button-container">
+        <a class="btn" href="index.html">Inicio</a>
+        <a class="btn" href="gallery.html">Galería</a>
+        <a class="btn" href="phrases.html">Frases Románticas</a>
+        <a class="btn" href="contact.html">Contacto</a>
+    </div>
+
     <!-- Imagen de fondo y contenedor principal -->
     <div class="background">
         <!-- Encabezado con una animación de corazones -->
@@ -323,16 +312,15 @@
         </section>
     </div>
 
-    <!-- Contenedor para el audio -->
-    <div id="audio-container">
-        <iframe src="audio.html" style="border:none; width:100%; height:100px;" scrolling="no"></iframe>
-    </div>
-
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    
+
+    <!-- Contenedor para el audio -->
+    <div id="audio-container">
+        <iframe src="audio.html" style="border:none; width:100%; height:100px;" scrolling="no"></iframe>
+    </div>
     <!-- JavaScript para controlar el audio -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -360,6 +348,5 @@
             });
         });
     </script>
-    
 </body>
 </html>
